@@ -9,7 +9,7 @@ def head(input_list):
       >>> head(['Jan', 'Feb', 'Mar'])
       'Jan'
     """
-
+ 
     return None
 
 
