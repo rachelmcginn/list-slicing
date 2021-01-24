@@ -49,7 +49,7 @@ def custom_append(input_list, value):
     """
 
 
-    input_list += value
+    input_list += [value]
 
 
     pass
@@ -141,12 +141,32 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-    popping_list = input_list[:]
-    popped = popping_list[-1:]
-    input_list[:-1]
+    ###this function is bugged###
+
+    # popping_list = input_list[:]
+    # popped = popping_list[-1]
+
+    # input_list = input_list - [input_list[-1]] #can't add list and string together
+    #reassigning input list to be 
+    #input list minus last index of input list 
 
 
-    return popped
+    #input_list = input_list[:-2]
+
+
+    # new_list = []
+
+    # for num in input_list:
+    #     if num != input_list[-1]:
+    #         new_list += [num]
+    #         print(num)
+    #         print(input_list)
+    #     else:
+    #         return num
+
+    # input_list = new_list        
+    # print(new_list)
+    # print(input_list)
 
 
 def custom_index(input_list, value):
@@ -162,7 +182,14 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    i = 0
+
+    for num in input_list:
+        if num != value:
+            i += 1
+        else:
+            return i
+ 
 
 
 def custom_count(input_list, value):
@@ -177,8 +204,14 @@ def custom_count(input_list, value):
         2
 
     """
+    count = 0 
 
-    return 0
+    for num in input_list:
+        if num == value:
+            count += 1
+
+
+    return count
 
 
 def custom_reverse(input_list):
@@ -196,6 +229,8 @@ def custom_reverse(input_list):
         True
 
     """
+    input_list = input_list[::-1]
+
 
     pass
 
@@ -217,7 +252,12 @@ def custom_contains(input_list, value):
 
     """
 
-    return None
+    for num in input_list:
+        if num == value:
+            return True
+    
+
+    return False
 
 
 def custom_equality(some_list, another_list):
@@ -236,7 +276,20 @@ def custom_equality(some_list, another_list):
 
     """
 
-    return None
+    # check the length of some_list and another_list
+
+
+    # if some_list == another_list:
+    #     return True
+
+    if custom_len(some_list) != custom_len(another_list):
+        return False
+    else:
+        for i, range(len(some_list)):
+            if some_list[i] != another_list[i]:
+                return False
+
+    return True
 
 
 # This is the part were we actually run the doctests.
@@ -247,3 +300,5 @@ if __name__ == '__main__':
     result = doctest.testmod()
     if result.failed == 0:
         print('ALL TESTS PASSED')
+
+custom_reverse([0, 1, 2, 3])
